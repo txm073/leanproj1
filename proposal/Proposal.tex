@@ -1,0 +1,64 @@
+% LaTeX Template For MATH 490 @ VCU
+\documentclass{article}
+
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{geometry}
+\geometry{a4paper, portrait, margin=2cm}
+
+
+\begin{document}
+
+\title{Project Proposal}
+
+\author{Tom Barnes}
+
+\maketitle              % typeset the title of the contribution
+
+\subsection{Introduction}
+For this project I am going to focus on a result from elementary number theory
+as I am accustomed to working with natural numbers and inductive proofs in lean. 
+I will aim to formalise the existence part of the fundamental theorem of arithmetic, 
+i.e. for any natural number $n > 1$, there exists prime numbers $p_1, p_2, \dots ,p_k$ such
+that $n=p_1p_2\cdots p_k$. If I have time, or if I complete all the lemmas and the main result
+in under 200 lines, I might try to also prove that the primes are unique up to reordering.
+
+\subsection{Proof Outline}
+The basic proof I will formalise will be a proof by induction as follows:
+\begin{itemize}
+  \item If $n>1$ is prime, then its factorisation is itself ($n=2$ is the base case)
+  \item If $n>2$ is composite then it has a factorisation $n=ab$ with $1<a,b<n$ 
+  \item Apply the induction hypothesis to get $a=p_1 \cdots p_k$ and $b = q_1 \cdots q_l$
+  \item Combine the factorisations of $a$ and $b$ to get a factorisation for $n$
+\end{itemize}
+
+\subsection{Definitions}
+Here are the basic definitions I will use:
+\begin{itemize}
+  \item I will use Mathlib's definition for primality
+  \item I will use my own definition of a prime factorisation of $n$ as simply a list of 
+  natural numbers that are primes and also whose product is equal to $n$
+\end{itemize}
+
+\subsection{Results}
+Here are the lemmas I intend to prove: (more will probably be required)
+\begin{enumerate}
+  \item Every prime number has a prime factorisation (a singleton list containing itself)
+  \item An empty list represents a prime factorisation of one
+  \item Appending two prime factorisations gives another prime factorisation 
+  \item Every natural number greater than one is either prime or has a factorisation into 
+  two natural numbers larger than one and smaller than itself
+  \item Strong induction for the main result
+\end{enumerate} 
+
+\subsection{Mathlib Usage}
+As mentioned earlier, I will use the primality predicate from Mathlib as a definition. I will 
+also use Mathlib's definition of natural numbers and lean's builtin linked list data structure.
+I will also use results from Mathlib relating to basic arithmetic, divisibility and operations
+on lists. I will not be using any functions from Mathlib relating to factorisation or prime 
+numbers, they will be formalised explicitly when required. I will likely use the standard induction
+tactic seen in the Natural Number game.
+
+\end{document}

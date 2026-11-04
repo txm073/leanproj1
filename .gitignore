@@ -1,1 +1,7 @@
 /.lake
+/proposal/*
+/report/*
+!/proposal/*.pdf
+!/proposal/*.tex
+!/report/*.pdf
+!/report/*.tex
