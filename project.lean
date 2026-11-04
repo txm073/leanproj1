@@ -243,7 +243,8 @@ theorem exists_factorisation (n : ℕ) (hn : n >= 2) :
     by_cases h_prime : Nat.Prime n
     · use [n]
       exact prime_factorisation_singleton n h_prime
-    · obtain ⟨a, b, prod_eq, a_gt_one, a_lt_n, b_gt_one, b_lt_n⟩ := not_prime_exists_factors n hn h_prime
+    · obtain ⟨a, b, prod_eq, a_gt_one, a_lt_n, b_gt_one, b_lt_n⟩
+        := not_prime_exists_factors n hn h_prime
       obtain ⟨la, ha⟩ := ih a a_lt_n a_gt_one
       obtain ⟨lb, hb⟩ := ih b b_lt_n b_gt_one
       have hab := factorisation_append a b la lb ha hb
